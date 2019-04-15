@@ -1,12 +1,13 @@
 require "test_helper"
 
 class CarlosadoPalindromeTest < Minitest::Test
+
   def test_that_it_has_a_version_number
     refute_nil ::CarlosadoPalindrome::VERSION
   end
 
   def test_non_palindrome
-    assert !"apple".palindrome?
+    refute "apple".palindrome?
   end
 
   def test_is_palindrome
@@ -21,4 +22,11 @@ class CarlosadoPalindromeTest < Minitest::Test
     assert "Madam, I'm Adam.".palindrome?
   end
 
+  def test_integer_non_palindrome
+    refute 12345.palindrome?
+  end
+
+  def test_integer_palindrome
+    assert 12321.palindrome?
+  end
 end

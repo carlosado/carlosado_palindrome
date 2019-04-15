@@ -1,19 +1,28 @@
 require "carlosado_palindrome/version"
 
-#module CarlosadoPalindrome
-#  class Error < StandardError; end
-#end
+module CarlosadoPalindrome
 
-class String
-
+  # Returns true for a palindrome or false otherwise
   def palindrome?
-    processed_content == processed_content.reverse
+    if processed_content.empty?
+      false
+    else
+      processed_content == processed_content.reverse
+    end
   end
 
   private
 
+    # Returns content for palindrome testing
     def processed_content
-      self.scan(/[a-z]/i).join.downcase
+      self.to_s.scan(/[a-z\d]/i).join.downcase
     end
+end
 
+class String
+  include CarlosadoPalindrome
+end
+
+class Integer
+  include CarlosadoPalindrome
 end
